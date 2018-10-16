@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Keycloak Debug Client</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <h1>Realm: <span id="realm"></span></h1>
+
+  <button id="login">Login</button>
+  <button id="logout">Logout</button>
+  <button id="register">Register</button>
+  <button id="accountManagement">Account Management</button>
+
+  <div id="authenticated">
+    <h2>ID Token</h2>
+    <pre id="idTokenParsed"></pre>
+
+    <h2>Bearer Token</h2>
+    <pre id="tokenParsed"></pre>
+
+    <h2>Refresh Token</h2>
+    <pre id="refreshTokenParsed"></pre>
+
+    <h2>User Info</h2>
+    <pre id="userInfo"></pre>
+
+    <h2>User Profile</h2>
+    <pre id="userProfile"></pre>
+  </div>
+
+  <div id="not-authenticated">
+    <h2>Not authenticated</h2>
+  </div>
+
+  <script src="http://localhost:8080/auth/js/keycloak.js"></script>
+  <script src="index.js"></script>
+
+  <script>
+    keycloakDebugClient({
+      url: "http://localhost:8080/auth",
+      realm: "keycloak-debug",
+      clientId: "keycloak-debug-client"
+    });
+  </script>
+
+</body>
+
+</html>
+

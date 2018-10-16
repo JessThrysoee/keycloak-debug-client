@@ -1,0 +1,94 @@
+html,
+body,
+h1,
+h2 {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+body,
+textarea,
+button {
+  color: #444;
+  background: #fffffe;
+  font-family: Geneva, sans-serif;
+  font-size: 14px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  line-height: 1.4;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 10px;
+  padding-bottom: 64px;
+}
+
+h1,
+h2 {
+  color: #07a;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 28px;
+  padding-top: 32px;
+  padding-bottom: 28px;
+}
+
+h2 {
+  font-size: 18px;
+  padding-top: 32px;
+  padding-bottom: 16px;
+}
+
+pre {
+  background: #eee;
+  overflow: auto;
+  padding: 10px 3px;
+  margin: 0;
+}
+
+button {
+  display: inline-block;
+  border: none;
+  min-width: 100px;
+  padding: 10px 20px;
+  margin: 3px 0;
+  text-decoration: none;
+  background: #eee;
+  font-weight: 400;
+  color: #07a;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+  background: #ddd;
+}
+
+button:focus {
+  outline: 1px solid #07a;
+  outline-offset: -4px;
+}
+
+button:active {
+  transform: scale(0.99);
+}
+
+#authenticated {
+  display: none;
+}
+
+#not-authenticated {
+  display: none;
+}
+
+.date-annotation {
+  color: #07a;
+}
