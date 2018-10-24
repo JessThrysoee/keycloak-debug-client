@@ -51,34 +51,31 @@ pre {
 }
 
 button {
-  display: inline-block;
-  border: none;
   min-width: 100px;
   padding: 10px 20px;
   margin: 3px 0;
-  text-decoration: none;
+  border: 0;
   background: #eee;
   font-weight: 400;
   color: #07a;
-  cursor: pointer;
   text-align: center;
+  text-transform: none;
+  cursor: pointer;
+  -webkit-appearance: button;
   transition: background 250ms ease-in-out, transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
-button:hover,
-button:focus {
+button:hover {
   background: #ddd;
 }
 
 button:focus {
-  outline: 1px solid #07a;
-  outline-offset: -4px;
+  outline: none;
 }
 
 button:active {
-  transform: scale(0.99);
+  outline: 1px solid #07a;
+  outline-offset: -1px;
 }
 
 #authenticated {
