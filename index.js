@@ -45,7 +45,7 @@
   function renderTokens(keycloak) {
     const tokens = ["idTokenParsed", "tokenParsed", "refreshTokenParsed"];
     tokens.forEach(function(token) {
-      $(token).innerHTML = stringify(addDateAnnotations(keycloak[token]));
+      $(token).innerHTML = stringify(addDateAnnotations(deepCopy(keycloak[token])));
     });
   }
 
@@ -86,6 +86,10 @@
 
   function stringify(obj) {
     return JSON.stringify(obj, null, 4);
+  }
+
+  function deepCopy(obj) {
+    return JSON.parse(JSON.stringify(obj));
   }
 
   function formatDate(d) {
