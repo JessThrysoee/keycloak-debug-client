@@ -89,3 +89,12 @@ button:active {
 .date-annotation {
   color: #07a;
 }
+
+#error {
+  display: none;
+}
+
+#error,
+#error h2 {
+  color: #d5280f;
+}

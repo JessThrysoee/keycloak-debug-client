@@ -10,7 +10,7 @@
         onSuccess(keycloak);
       })
       .error(function(e) {
-        console.error("failed to initialize", e);
+        showError("Failed to initialize Keycloak", e);
       });
   }
 
@@ -33,12 +33,13 @@
   }
 
   function load(id, fn) {
+    clearError();
     fn()
       .success(function(data) {
         $(id).innerHTML = stringify(data);
       })
       .error(function(e) {
-        console.error("Failed to load " + id, e);
+        showError("Failed to load " + id, e);
       });
   }
 
@@ -74,6 +75,17 @@
     buttons.forEach(function(action) {
       $(action).addEventListener("click", keycloak[action]);
     });
+  }
+
+  function showError(msg, e) {
+    $("error").style.display = "block";
+    $("error-message").innerHTML = msg + (e ? ": " + e : "");
+    console.error(msg, e);
+  }
+
+  function clearError() {
+    $("error").style.display = "none";
+    $("error-message").innerHTML = "";
   }
 
   //
