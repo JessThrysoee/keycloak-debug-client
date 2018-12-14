@@ -1,23 +1,23 @@
 (function() {
   "use strict";
 
-  function keycloakDebugClient(options) {
-    const keycloak = Keycloak(options);
+  function keycloakDebugClient(config, options) {
+    const keycloak = Keycloak(config);
 
     keycloak
       .init({ onLoad: "check-sso" })
       .success(function() {
-        onSuccess(keycloak);
+        onSuccess(keycloak, options);
       })
       .error(function(e) {
         showError("Failed to initialize Keycloak", e);
       });
   }
 
-  function onSuccess(keycloak) {
+  function onSuccess(keycloak, options) {
     $("realm").innerText = keycloak.realm;
 
-    addEventHandlers(keycloak);
+    addEventHandlers(keycloak, options);
     toggleAuthenticated(keycloak.authenticated);
 
     if (!keycloak.authenticated) return;
@@ -70,10 +70,12 @@
     return "<span class='date-annotation'>" + str + "</span>";
   }
 
-  function addEventHandlers(keycloak) {
+  function addEventHandlers(keycloak, options) {
     const buttons = ["login", "logout", "register", "accountManagement"];
     buttons.forEach(function(action) {
-      $(action).addEventListener("click", keycloak[action]);
+      $(action).addEventListener("click", function() {
+        keycloak[action](options);
+      });
     });
   }
 
