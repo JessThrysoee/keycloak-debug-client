@@ -42,6 +42,15 @@
     <script src="http://localhost:8080/auth/js/keycloak.js"></script>
     <script src="index.js"></script>
 
+    <!--
+      Assumes a keycloak realm and client setup like:
+
+      Realm: keycloak-debug
+        Client: keycloak-debug-client
+          Valid Redirect URIs: http://localhost:2000/*
+          Web Origins: +
+    -->
+
     <script>
       keycloakDebugClient({
         url: "http://localhost:8080/auth",
