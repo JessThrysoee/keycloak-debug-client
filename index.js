@@ -5,11 +5,11 @@
     const keycloak = Keycloak(config);
 
     keycloak
-      .init({ onLoad: "check-sso" })
-      .success(function() {
+      .init({ promiseType: "native", onLoad: "check-sso" })
+      .then(function() {
         onSuccess(keycloak, options);
       })
-      .error(function(e) {
+      .catch(function(e) {
         showError("Failed to initialize Keycloak", e);
       });
   }
@@ -35,10 +35,10 @@
   function load(id, fn) {
     clearError();
     fn()
-      .success(function(data) {
+      .then(function(data) {
         $(id).innerHTML = stringify(data);
       })
-      .error(function(e) {
+      .catch(function(e) {
         showError("Failed to load " + id, e);
       });
   }
