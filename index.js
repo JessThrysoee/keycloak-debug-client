@@ -54,8 +54,10 @@
     const lifespan = tokenLifespan(token);
 
     ["exp", "iat", "auth_time"].forEach(function(claim) {
-      const d = formatDate(new Date(token[claim] * 1000));
-      token[claim] = token[claim] + span(" - " + d);
+      if (token[claim]) {
+        const d = formatDate(new Date(token[claim] * 1000));
+        token[claim] = token[claim] + span(" - " + d);
+      }
     });
 
     token.exp = token.exp + span(" - valid for " + lifespan + " min");
