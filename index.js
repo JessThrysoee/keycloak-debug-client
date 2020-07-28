@@ -5,7 +5,7 @@
     const keycloak = Keycloak(config);
 
     keycloak
-      .init({ promiseType: "native", onLoad: "check-sso" })
+      .init({ promiseType: "native", onLoad: "check-sso", pkceMethod: "S256" })
       .then(function() {
         onSuccess(keycloak, options);
       })
