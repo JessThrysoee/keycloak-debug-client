@@ -2,7 +2,7 @@
   "use strict";
 
   function keycloakDebugClient(config, options) {
-    const keycloak = Keycloak(config);
+    const keycloak = new Keycloak(config);
 
     keycloak
       .init({ promiseType: "native", onLoad: "check-sso", pkceMethod: "S256" })
