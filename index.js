@@ -1,6 +1,8 @@
 import Keycloak from "./keycloak.js";
 
 function keycloakDebugClient(config, options) {
+  $("realm").innerText = config.realm;
+
   const keycloak = new Keycloak(config);
 
   keycloak
@@ -14,8 +16,6 @@ function keycloakDebugClient(config, options) {
 }
 
 function onSuccess(keycloak, options) {
-  $("realm").innerText = keycloak.realm;
-
   addEventHandlers(keycloak, options);
   toggleAuthenticated(keycloak.authenticated);
 
