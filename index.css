@@ -62,7 +62,9 @@ button {
   text-transform: none;
   cursor: pointer;
   -webkit-appearance: button;
-  transition: background 250ms ease-in-out, transform 150ms ease;
+  transition:
+    background 250ms ease-in-out,
+    transform 150ms ease;
 }
 
 button:hover {
@@ -97,4 +99,11 @@ button:active {
 #error,
 #error h2 {
   color: #d5280f;
+}
+
+.clipboard-copy {
+  fill: #07a;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
 }

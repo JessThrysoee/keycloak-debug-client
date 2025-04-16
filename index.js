@@ -4,7 +4,7 @@ function keycloakDebugClient(config, options) {
   const keycloak = new Keycloak(config);
 
   keycloak
-    .init({ promiseType: "native", onLoad: "check-sso", pkceMethod: "S256" })
+    .init({ onLoad: "check-sso", pkceMethod: "S256" })
     .then(function () {
       onSuccess(keycloak, options);
     })
@@ -80,6 +80,13 @@ function addEventHandlers(keycloak, options) {
       keycloak[action](options);
     });
   });
+
+  const tokens = ["token", "idToken"];
+  tokens.forEach(function (token) {
+    $(token).addEventListener("click", async function () {
+      await navigator.clipboard.writeText(keycloak[token]);
+    });
+  })
 }
 
 function showError(msg, e) {
