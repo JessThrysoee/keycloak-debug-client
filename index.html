@@ -43,9 +43,6 @@
 
     <div id="not-authenticated"><h2>Not authenticated</h2></div>
 
-    <script src="http://localhost:8080/auth/js/keycloak.js"></script>
-    <script src="index.js"></script>
-
     <!--
       Assumes a keycloak realm and client setup like:
 
@@ -55,9 +52,11 @@
           Web Origins: +
     -->
 
-    <script>
+    <script type="module">
+      import { keycloakDebugClient } from "./index.js";
+
       keycloakDebugClient({
-        url: "http://localhost:8080/auth",
+        url: "http://localhost:8080",
         realm: "keycloak-debug",
         clientId: "keycloak-debug-client"
       });
