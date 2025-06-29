@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
-# create realm 'keycloak-debug' with client 'keycloak-debug-client' and user 'testuser'
+# Create realm 'keycloak-debug' with client 'keycloak-debug-client' and user 'testuser'
+#
+# Provide kcadm credentials in environment variables KC_CLI_USERNAME and KC_CLI_PASSWORD
 
 REALM="keycloak-debug"
 CLIENT="keycloak-debug-client"
@@ -33,12 +35,11 @@ kcadm() {
     "$KEYCLOAK_HOME/bin/kcadm.sh" "$@"
 }
 
-kcadm config credentials --server http://localhost:8080 --realm master --user admin
+kcadm config credentials --server http://localhost:8080 --realm master --user $KC_CLI_USERNAME
 
 kcadm create realms -s realm="$REALM" -s enabled=true
 kcadm create clients -r "$REALM" -s clientId="$CLIENT" -s enabled=true -s 'redirectUris=["http://localhost:2000/*"]' -s publicClient=true
 
 kcadm create users -r "$REALM" -s username=testuser -s email="$USERNAME@example.com" -s firstName="$USERNAME" -s lastName="$USERNAME" -s enabled=true
 kcadm set-password -r "$REALM" --username "$USERNAME" --new-password "$PASSWORD"
-
 
